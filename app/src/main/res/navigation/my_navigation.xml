@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_navigation"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/detailInformation"
+        android:name="com.example.chapter4.DetailInformation"
+        android:label="fragment_detail_information"
+        tools:layout="@layout/fragment_detail_information" />
+    <fragment
+        android:id="@+id/keranjang"
+        android:name="com.example.chapter4.Keranjang"
+        android:label="fragment_keranjang"
+        tools:layout="@layout/fragment_keranjang" />
+    <fragment
+        android:id="@+id/konfirmasiPesanan"
+        android:name="com.example.chapter4.KonfirmasiPesanan"
+        android:label="fragment_konfirmasi_pesanan"
+        tools:layout="@layout/fragment_konfirmasi_pesanan" />
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.example.chapter4.Profile"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.chapter4.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_detailInformation"
+            app:destination="@id/detailInformation" />
+    </fragment>
+</navigation>

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="15dp"
+    android:layout_marginRight="15dp"
+    android:layout_marginLeft="15dp"
+    android:orientation="vertical"
+    tools:context=".HomeFargment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/binar"
+            android:textStyle="bold"
+            style="title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hai Muhammad Ismail,"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Mau makan apa hari ini?"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/binar" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="128dp"
+        android:background="@drawable/background"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="900dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="30dp"
+            android:src="@drawable/diskon" />
+
+        <TextView
+            android:id="@+id/dskon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="130dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="150dp"
+            android:layout_marginBottom="90dp"
+            android:text="DISKON 30 %"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:textStyle="bold"
+
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="125dp"
+            android:layout_marginEnd="-120dp"
+            android:layout_marginBottom="55dp"
+            android:text="Pesan makanan lewat aplikasi dan \n dapatkan diskonmu"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp">
+        <ImageView
+            android:id="@+id/listMenu1"
+            android:layout_width="85dp"
+            android:layout_height="65dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/nasi"
+            tools:layout_editor_absoluteX="16dp"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/textNasi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Nasi"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/listMenu1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listMenu1" />
+
+        <ImageView
+            android:id="@+id/menuMie"
+            android:layout_width="85dp"
+            android:layout_height="65dp"
+            android:layout_marginLeft="20dp"
+            app:layout_constraintStart_toEndOf="@id/listMenu1"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/mie"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/textMie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="52dp"
+            android:textColor="@color/black"
+            android:text="Mie"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/menuMie"
+            app:layout_constraintStart_toEndOf="@+id/textNasi"
+            app:layout_constraintTop_toBottomOf="@id/menuMie"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <ImageView
+            android:id="@+id/snack"
+            android:layout_width="70dp"
+            android:layout_height="65dp"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/snack"
+            app:layout_constraintStart_toEndOf="@id/menuMie"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/textSnack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="45dp"
+            android:textColor="@color/black"
+            android:text="Snack"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/snack"
+            app:layout_constraintStart_toEndOf="@id/textMie"
+            app:layout_constraintTop_toBottomOf="@+id/snack" />
+        <ImageView
+            android:id="@+id/minuman"
+            android:layout_width="70dp"
+            android:layout_height="65dp"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/minuman"
+            app:layout_constraintStart_toEndOf="@id/snack"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Minuman"
+            android:layout_marginLeft="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/minuman"
+            app:layout_constraintStart_toEndOf="@+id/textSnack"
+            app:layout_constraintTop_toBottomOf="@+id/minuman"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/listMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="List Menu Makanan"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+        <ImageButton
+            android:id="@+id/changelist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/list_button"
+            android:layout_marginRight="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="20dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/list_menu_linear"/>
+
+
+
+
+</LinearLayout>
