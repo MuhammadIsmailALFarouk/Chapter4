@@ -87,7 +87,6 @@ class DetailInformation : Fragment() {
         }
 
     }
-
     private fun mIncrement(){
         viewModel.incremet()
     }

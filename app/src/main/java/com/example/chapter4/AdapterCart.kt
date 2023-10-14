@@ -62,6 +62,7 @@ class AdapterCart (private val contex: Context,private val dataCart:ModalDataDao
 
     fun setDataCartList(listCart: List<Cart>) {
         this.listCart = listCart
+        notifyDataSetChanged()
 
     }
 
