@@ -16,19 +16,16 @@ interface ModalDataDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(chart: Cart)
 
-    @Query("SELECT * FROM cart ORDER BY id DESC")
+    @Query("SELECT * FROM CART ORDER BY id DESC")
     fun getAllItem(): LiveData<List<Cart>>
 
-    @Delete
-    fun delete(chart: Cart)
-
-    @Query("DELETE FROM cart WHERE id = :itemIdParams")
-    fun delteByItemId(itemIdParams: Long)
+    @Query("DELETE FROM CART WHERE id = :itemIdParams")
+    fun delteByItemId(itemIdParams: Int)
 
     @Update
     fun update(chart: Cart)
 
-        @Query("UPDATE cart SET jumlahMakanan = :newQuantity where id = :itemIdParams")
-    fun  updateQuantityByItemId(newQuantity: Int, itemIdParams: Long)
+        @Query("UPDATE CART SET jumlahMakanan = :newQuantity where id = :itemIdParams")
+    fun  updateQuantityByItemId(newQuantity: Int, itemIdParams: Int)
 }
 

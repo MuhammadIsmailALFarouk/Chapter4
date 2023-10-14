@@ -52,13 +52,7 @@ class DetailInformation : Fragment() {
             alamatToko.text = makanan.alamatToko
 
         }
-//        binding.tambahKeranjang.setOnClickListener{
-//            val namaMakanan : TextView = binding.namaMakanan
-//            val gambarMakanan: ImageView = binding.ivImage1
-//            val hargaMakanan : TextView = binding.hargaMakanan
-//            val deskripsi: TextView = binding.description
-//            val alamatToko: TextView = binding.alamatToko
-//        }
+
 
         withViewModels()
 
