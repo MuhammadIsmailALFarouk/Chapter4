@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chapter4.databinding.FragmentKonfirmasiPesananBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class KonfirmasiPesanan : Fragment() {
     private lateinit var binding: FragmentKonfirmasiPesananBinding
@@ -26,6 +27,8 @@ class KonfirmasiPesanan : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val bottomNav = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNav)
+        bottomNav.visibility = View.GONE
         val totalHarga = arguments?.getInt("TotalHarga")
 
         binding.tv3.text = "Rp. $totalHarga"
