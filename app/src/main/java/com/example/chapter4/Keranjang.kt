@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
@@ -44,6 +45,16 @@ class Keranjang : Fragment() {
 
         dataDao.getAllItem().observe(viewLifecycleOwner,Observer{listCart ->
             adapterCart.setDataCartList(listCart)
+
+            val totalHarga = adapterCart.getTotalHarga()
+            binding.tvTotalHargaCart.text = "Rp. $totalHarga"
+
+            binding.btnPesanToKonfirmasi.setOnClickListener {
+                val nBundle = Bundle()
+                nBundle.putInt("TotalHarga",totalHarga)
+                findNavController().navigate(R.id.action_keranjang_to_konfirmasiPesanan, nBundle)
+
+            }
 
 
         })

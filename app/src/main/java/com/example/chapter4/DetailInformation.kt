@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.chapter4.databinding.FragmentDetailInformationBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -37,6 +39,7 @@ class DetailInformation : Fragment() {
         val bottomNav = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNav)
         bottomNav.visibility = View.GONE
         val makanan = arguments?.getParcelable<ModalData>("ModalData")
+        val viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
         if(makanan != null){
             val namaMakanan : TextView = binding.namaMakanan
@@ -55,9 +58,17 @@ class DetailInformation : Fragment() {
 
 
         withViewModels()
-
+        viewModel.counter1.observe(viewLifecycleOwner){
+            if (makanan?.hargaMakanan != null){
+                var numericPart = makanan.hargaMakanan.replace("[^0-9]".toRegex(), "")
+                binding.tambahKeranjang.text = "Tambah Ke Keranjang - Rp. ${it*numericPart.toInt()}"
+            }
+        }
         binding.tambahKeranjang.setOnClickListener {
             Database.getInstance(requireContext()).modalDataDao.insert(Cart(0,makanan?.namaMakanan,makanan?.hargaMakanan?.replace("[^0-9]".toRegex(), "",),makanan?.image,binding.tvCounter.text.toString().toInt()))
+            val nBundle = Bundle()
+            findNavController().navigate(R.id.action_detailInformation_to_keranjang, nBundle)
+
 
         }
     }

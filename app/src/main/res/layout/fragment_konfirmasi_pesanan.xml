@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -27,7 +27,7 @@
 
         <Button
             android:id="@+id/button2"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Ambil Sendiri"
@@ -37,7 +37,7 @@
             />
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_marginTop="10dp"
             android:layout_height="wrap_content"
             android:text="Dikirim"
@@ -46,50 +46,70 @@
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+            android:id="@+id/recycleKeranjang"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            tools:listitem="@layout/list_keranjang"
+            tools:itemCount="2"
             app:layout_constraintTop_toBottomOf="@+id/button2" />
 
         <TextView
             android:id="@+id/textView7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:text="Metode Pembayaran"
             android:textSize="20sp"
             android:textColor="@color/black"
             android:textStyle="bold"
-
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/recyclerView" />
+            app:layout_constraintTop_toBottomOf="@id/recycleKeranjang" />
 
         <Button
-            android:id="@+id/we1"
-            android:layout_width="wrap_content"
+            android:id="@+id/cash"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="8dp"
             android:text="CASH"
-            app:layout_constraintBottom_toBottomOf="@+id/button"
+            app:layout_constraintBottom_toBottomOf="@+id/dompetDigital"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView7"
             app:layout_constraintVertical_bias="1.0" />
 
         <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
+            android:id="@+id/dompetDigital"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="Dompet Digital"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/we1"
+            app:layout_constraintStart_toEndOf="@id/cash"
             app:layout_constraintTop_toBottomOf="@id/textView7" />
+
+        <TextView
+            android:id="@+id/tv3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            app:layout_constraintTop_toBottomOf="@id/cash"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:text="Total Pembayaran"/>
+        <Button
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tv3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="Pesan"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
 
-</FrameLayout>
+</ScrollView>

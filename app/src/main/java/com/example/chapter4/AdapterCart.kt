@@ -32,25 +32,36 @@ class AdapterCart (private val contex: Context,private val dataCart:ModalDataDao
         holder.image.setImageResource(current.image?:R.drawable.image_default)
         holder.quantity.text="${current.quantity}"
 
+        var totalPembayaran = current.hargaMakanan?.toInt()?.times(current.quantity)
+        holder.harga.text = "Rp. ${totalPembayaran}"
 
-       // Menambahkan Jumlah Makanan
-        holder.plus.setOnClickListener {
-            current.quantity++
-            updateDataCart(current)
-        }
 
-       // mengurangi jumlah makanan
-        holder.minus.setOnClickListener {
-            if (current.quantity > 1) {
-               current.quantity--
-                updateDataCart(current)
-            }
-        }
 
 
         // Tombol untuk menghapus item
         holder.delete.setOnClickListener {
             deleteCart(current)
+            notifyItemRemoved(position)
+        }
+
+
+       // Menambahkan Jumlah Makanan
+        holder.plus.setOnClickListener {
+            current.quantity++
+            updateDataCart(current)
+            notifyItemChanged(position)
+        }
+
+       // mengurangi jumlah makanan
+        holder.minus.setOnClickListener {
+            if (current.quantity < 1){
+                deleteCart(current)
+                notifyItemRemoved(position)
+            }else{
+                current.quantity--
+                updateDataCart(current)
+                notifyItemChanged(position)
+            }
         }
 
     }
@@ -58,7 +69,16 @@ class AdapterCart (private val contex: Context,private val dataCart:ModalDataDao
     override fun getItemCount(): Int {
         return listCart.size
     }
+    fun getTotalHarga(): Int {
+        var totalHarga = 0
 
+        for (item in listCart) {
+            val hargaMakanan = item.hargaMakanan?.toInt() ?: 0
+            totalHarga += hargaMakanan * item.quantity
+        }
+
+        return totalHarga
+    }
 
     fun setDataCartList(listCart: List<Cart>) {
         this.listCart = listCart
@@ -77,7 +97,7 @@ class AdapterCart (private val contex: Context,private val dataCart:ModalDataDao
     class CartViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
         val name: TextView = itemView.findViewById(R.id.tv_namaMenu)
         val image: ImageView = itemView.findViewById(R.id.imageDefault)
-        val price: TextView = itemView.findViewById(R.id.tv_hargaMenu)
+        val harga: TextView = itemView.findViewById(R.id.tv_hargaMenu)
         val quantity: TextView = itemView.findViewById(R.id.tvCounter)
         val plus: ImageView = itemView.findViewById(R.id.plus)
         val minus: ImageView = itemView.findViewById(R.id.minus)

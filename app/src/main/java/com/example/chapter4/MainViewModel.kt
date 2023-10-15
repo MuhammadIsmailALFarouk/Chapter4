@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 
 class MainViewModel: ViewModel() {
     val counter : MutableLiveData<Int> = MutableLiveData(0)
-    val counter1 :LiveData<Int> get() = counter1
+    val counter1 :LiveData<Int> get() = counter
 
 
     fun incremet(){

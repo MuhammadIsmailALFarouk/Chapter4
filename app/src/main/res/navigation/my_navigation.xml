@@ -9,12 +9,20 @@
         android:id="@+id/detailInformation"
         android:name="com.example.chapter4.DetailInformation"
         android:label="fragment_detail_information"
-        tools:layout="@layout/fragment_detail_information" />
+        tools:layout="@layout/fragment_detail_information" >
+        <action
+            android:id="@+id/action_detailInformation_to_keranjang"
+            app:destination="@id/keranjang" />
+    </fragment>
     <fragment
         android:id="@+id/keranjang"
         android:name="com.example.chapter4.Keranjang"
         android:label="fragment_keranjang"
-        tools:layout="@layout/fragment_keranjang" />
+        tools:layout="@layout/fragment_keranjang" >
+        <action
+            android:id="@+id/action_keranjang_to_konfirmasiPesanan"
+            app:destination="@id/konfirmasiPesanan" />
+    </fragment>
     <fragment
         android:id="@+id/konfirmasiPesanan"
         android:name="com.example.chapter4.KonfirmasiPesanan"
