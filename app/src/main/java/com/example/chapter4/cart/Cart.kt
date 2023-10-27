@@ -1,4 +1,4 @@
-package com.example.chapter4
+package com.example.chapter4.cart
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -9,7 +9,7 @@ data class Cart(
     @PrimaryKey(autoGenerate = true) var id: Int = 0,
     @ColumnInfo(name = "nama_makanan") var namaMakanan: String?=null,
     @ColumnInfo(name = "harga_makanan") var hargaMakanan: String?=null,
-    @ColumnInfo(name = "image") var image: Int?=null,
+    @ColumnInfo(name = "image") var image: String?=null,
     @ColumnInfo(name = "jumlahMakanan") var quantity:Int = -1,
     @ColumnInfo(name = "noted") var noted:String?=null,
     @ColumnInfo(name = "is_deleted")

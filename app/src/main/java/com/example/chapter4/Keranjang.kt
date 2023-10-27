@@ -6,18 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.room.Room
+import com.example.chapter4.cart.AdapterCart
+import com.example.chapter4.databaseRom.Database
+import com.example.chapter4.databaseRom.ModalDataDao
 import com.example.chapter4.databinding.FragmentKeranjangBinding
-import kotlinx.coroutines.launch
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class Keranjang : Fragment() {
     private lateinit var binding : FragmentKeranjangBinding
-    private lateinit var modalDataDao:ModalDataDao
+    private lateinit var modalDataDao: ModalDataDao
     private lateinit var adapterCart: AdapterCart
 
     override fun onCreateView(
@@ -33,10 +34,12 @@ class Keranjang : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val recyclerViewKeranjang :RecyclerView= binding.recycleKeranjang
         recyclerViewKeranjang.layoutManager = LinearLayoutManager(context)
+//        val bottomNav = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNav)
+//        bottomNav.visibility = View.GONE
 
 
-        modalDataDao =Database.getInstance(requireContext()).modalDataDao
-        adapterCart =AdapterCart(requireContext(),modalDataDao)
+        modalDataDao = Database.getInstance(requireContext()).modalDataDao
+        adapterCart = AdapterCart(requireContext(),modalDataDao)
         recyclerViewKeranjang.adapter =adapterCart
 
 

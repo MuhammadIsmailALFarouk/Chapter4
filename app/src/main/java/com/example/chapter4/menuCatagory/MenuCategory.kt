@@ -1,16 +1,16 @@
-package com.example.chapter4.model
+package com.example.chapter4.menuCatagory
 
 
-import android.os.Parcelable
+import com.example.chapter4.menuCatagory.DataX
 import com.google.gson.annotations.SerializedName
-import kotlinx.parcelize.Parcelize
 
-@Parcelize
-data class MenuCatagory(
+data class MenuCategory(
+    @SerializedName("code")
+    val code: Int,
     @SerializedName("data")
-    val `data`: List<Data>,
+    val `data`: List<DataX>,
     @SerializedName("message")
     val message: String,
     @SerializedName("status")
     val status: Boolean
-):Parcelable
+)

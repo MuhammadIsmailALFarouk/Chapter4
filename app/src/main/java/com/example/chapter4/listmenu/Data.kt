@@ -1,29 +1,23 @@
-package com.example.chapter4.model
+package com.example.chapter4.listmenu
 
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
-// list menu
 @Parcelize
-data class DataX(
-    @SerializedName("alamatResto")
+// List Menu
+data class Data(
+    @SerializedName("alamat_resto")
     val alamatResto: String,
-    @SerializedName("createdAt")
-    val createdAt: String,
     @SerializedName("detail")
     val detail: String,
     @SerializedName("harga")
     val harga: Int,
-    @SerializedName("hargaFormat")
+    @SerializedName("harga_format")
     val hargaFormat: String,
-    @SerializedName("id")
-    val id: Int,
-    @SerializedName("imageUrl")
+    @SerializedName("image_url")
     val imageUrl: String,
     @SerializedName("nama")
-    val nama: String,
-    @SerializedName("updatedAt")
-    val updatedAt: String
+    val nama: String
 ):Parcelable

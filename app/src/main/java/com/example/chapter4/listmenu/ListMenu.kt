@@ -1,16 +1,18 @@
-package com.example.chapter4.model
+package com.example.chapter4.listmenu
 
 
-import android.os.Parcelable
+import androidx.annotation.Keep
+import com.example.chapter4.listmenu.Data
 import com.google.gson.annotations.SerializedName
-import kotlinx.parcelize.Parcelize
 
-@Parcelize
+@Keep
 data class ListMenu(
+    @SerializedName("code")
+    val code: Int,
     @SerializedName("data")
-    val data: List<DataX>,
+    val data : List<Data>?,
     @SerializedName("message")
     val message: String,
     @SerializedName("status")
     val status: Boolean
-):Parcelable
+)

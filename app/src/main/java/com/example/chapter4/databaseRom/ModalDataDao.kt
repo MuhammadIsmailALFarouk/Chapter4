@@ -1,15 +1,13 @@
-package com.example.chapter4
+package com.example.chapter4.databaseRom
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
-import androidx.room.OnConflictStrategy.Companion.REPLACE
 
 import androidx.room.Query
 import androidx.room.Update
-import kotlinx.coroutines.flow.Flow
+import com.example.chapter4.cart.Cart
 
 @Dao
 interface ModalDataDao {
@@ -22,6 +20,11 @@ interface ModalDataDao {
     @Query("DELETE FROM CART WHERE id = :itemIdParams")
     fun delteByItemId(itemIdParams: Int)
 
+    @Query("SELECT * FROM CART WHERE nama_makanan = :name LIMIT 1")
+    fun getItemByName(name: String): Cart?
+
+    @Query("DELETE FROM CART")
+    fun deleteAllItemCart()
     @Update
     fun update(chart: Cart)
 

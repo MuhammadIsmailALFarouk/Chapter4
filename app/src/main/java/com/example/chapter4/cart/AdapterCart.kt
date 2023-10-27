@@ -1,4 +1,4 @@
-package com.example.chapter4
+package com.example.chapter4.cart
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,12 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
-import com.example.chapter4.databinding.ListKeranjangBinding
-import com.example.chapter4.databinding.ListMenuLinearBinding
+import com.bumptech.glide.Glide
+import com.example.chapter4.databaseRom.ModalDataDao
+import com.example.chapter4.R
 
-class AdapterCart (private val contex: Context,private val dataCart:ModalDataDao) :
+class AdapterCart (private val contex: Context,private val dataCart: ModalDataDao) :
     RecyclerView.Adapter<AdapterCart.CartViewHolder>() {
     private var listCart:List<Cart> = emptyList()
 
@@ -29,7 +29,12 @@ class AdapterCart (private val contex: Context,private val dataCart:ModalDataDao
         val current = listCart[position]
 
         holder.name.text = current.namaMakanan
-        holder.image.setImageResource(current.image?:R.drawable.image_default)
+        Glide
+            .with(holder.itemView)
+            .load(current.image)
+            .centerCrop()
+            .into(holder.image)
+
         holder.quantity.text="${current.quantity}"
 
         var totalPembayaran = current.hargaMakanan?.toInt()?.times(current.quantity)

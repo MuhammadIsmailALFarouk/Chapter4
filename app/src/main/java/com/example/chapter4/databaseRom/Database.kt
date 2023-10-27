@@ -1,14 +1,15 @@
-package com.example.chapter4
+package com.example.chapter4.databaseRom
 
 import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.chapter4.cart.Cart
 
 
-@androidx.room.Database(entities = [Cart :: class], version = 1)
+@androidx.room.Database(entities = [Cart :: class], version = 2)
 abstract class Database : RoomDatabase(){
 
-    abstract val modalDataDao:ModalDataDao
+    abstract val modalDataDao: ModalDataDao
     companion object{
         @Volatile
         private var INSTANCE : Database?=null

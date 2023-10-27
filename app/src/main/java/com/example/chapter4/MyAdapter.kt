@@ -1,18 +1,17 @@
 package com.example.chapter4
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
+import com.bumptech.glide.Glide
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chapter4.databinding.ListMenuGridBinding
 import com.example.chapter4.databinding.ListMenuLinearBinding
+import com.example.chapter4.listmenu.Data
 
-class MyAdapter(private val listMenu: ArrayList<ModalData>, val isGrid:Boolean)
+class MyAdapter(private val listMenu: ArrayList<Data>, val isGrid:Boolean)
     : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
-    var onItemClick : ((ModalData) -> Unit)? = null
+    var onItemClick : ((Data) -> Unit)? = null
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -48,17 +47,25 @@ class MyAdapter(private val listMenu: ArrayList<ModalData>, val isGrid:Boolean)
 }
 
 class GridMenuHolder(val binding: ListMenuGridBinding) : RecyclerView.ViewHolder(binding.root) {
-    fun onBind(data: ModalData) {
-        binding.imageDefault.setImageResource(data.image)
-        binding.namaMakanan.text = data.namaMakanan
-        binding.hargaMakanan.text = data.hargaMakanan
+    fun onBind(data: Data) {
+        Glide
+            .with(itemView)
+            .load(data.imageUrl)
+            .centerCrop()
+            .into(binding.imageDefault)
+        binding.namaMakanan.text = data.nama
+        binding.hargaMakanan.text = "Rp. ${data.harga}"
     }
 }
 
 class LinearMenuHolder(val binding: ListMenuLinearBinding) : RecyclerView.ViewHolder(binding.root) {
-    fun onBind(data: ModalData) {
-        binding.imageDefault.setImageResource(data.image)
-        binding.namaMakanan.text = data.namaMakanan
-        binding.hargaMakanan.text = data.hargaMakanan
+    fun onBind(data: Data) {
+        Glide
+            .with(itemView)
+            .load(data.imageUrl)
+            .centerCrop()
+            .into(binding.imageDefault)
+        binding.namaMakanan.text = data.nama
+        binding.hargaMakanan.text = "Rp. ${data.harga}"
     }
 }

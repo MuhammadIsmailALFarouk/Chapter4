@@ -4,6 +4,8 @@ plugins {
     id ("kotlin-android")
     id ("com.google.devtools.ksp")
     id ("kotlin-parcelize")
+    id("com.google.gms.google-services")
+    id("com.google.firebase.crashlytics")
 }
 
 android {
@@ -50,6 +52,9 @@ dependencies {
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+    implementation("com.google.firebase:firebase-auth:22.2.0")
+    implementation("com.google.firebase:firebase-crashlytics:18.5.0")
+    implementation("com.google.firebase:firebase-analytics:21.4.0")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
@@ -67,6 +72,9 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
+
+    // Glide
+    implementation("com.github.bumptech.glide:glide:4.16.0")
 
 
 

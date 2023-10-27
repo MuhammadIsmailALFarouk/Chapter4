@@ -9,16 +9,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
+import com.example.chapter4.cart.Cart
+import com.example.chapter4.databaseRom.Database
 import com.example.chapter4.databinding.FragmentDetailInformationBinding
+import com.example.chapter4.listmenu.Data
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class DetailInformation : Fragment() {
     private val viewModel: MainViewModel by viewModels()
     private lateinit var _binding:FragmentDetailInformationBinding
-    private lateinit var appDb:Database
+    private lateinit var appDb: Database
     private val binding get() = _binding
     private var mcounter:Int = 0
 
@@ -38,7 +43,7 @@ class DetailInformation : Fragment() {
         setOnclickLocation()
         val bottomNav = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNav)
         bottomNav.visibility = View.GONE
-        val makanan = arguments?.getParcelable<ModalData>("ModalData")
+        val makanan = arguments?.getParcelable<Data>("ModalData")
         val viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
         if(makanan != null){
@@ -48,28 +53,46 @@ class DetailInformation : Fragment() {
             val deskripsi: TextView = binding.description
             val alamatToko: TextView = binding.alamatToko
 
-            namaMakanan.text = makanan.namaMakanan
-            gambarMakanan.setImageResource(makanan.image)
-            hargaMakanan.text = makanan.hargaMakanan
-            deskripsi.text = makanan.deskripsi
-            alamatToko.text = makanan.alamatToko
+            namaMakanan.text = makanan.nama
+            Glide
+                .with(requireActivity())
+                .load(makanan.imageUrl)
+                .centerCrop()
+                .into(gambarMakanan)
+            hargaMakanan.text = "Rp. ${makanan.harga}"
+            deskripsi.text = makanan.detail
+            alamatToko.text = makanan.alamatResto
 
         }
 
 
         withViewModels()
         viewModel.counter1.observe(viewLifecycleOwner){
-            if (makanan?.hargaMakanan != null){
-                var numericPart = makanan.hargaMakanan.replace("[^0-9]".toRegex(), "")
+            if (makanan?.harga != null){
+                var numericPart = makanan.harga.toString().replace("[^0-9]".toRegex(), "")
                 binding.tambahKeranjang.text = "Tambah Ke Keranjang - Rp. ${it*numericPart.toInt()}"
             }
         }
         binding.tambahKeranjang.setOnClickListener {
-            Database.getInstance(requireContext()).modalDataDao.insert(Cart(0,makanan?.namaMakanan,makanan?.hargaMakanan?.replace("[^0-9]".toRegex(), "",),makanan?.image,binding.tvCounter.text.toString().toInt()))
-            val nBundle = Bundle()
-            findNavController().navigate(R.id.action_detailInformation_to_keranjang, nBundle)
+            val jumlahPesanan = binding.tvCounter.text.toString().toInt()
 
-
+            if(binding.tvCounter.text.toString().toInt() > 0){
+                val cekItem =Database.getInstance(requireContext()).modalDataDao.getItemByName(makanan?.nama.toString()) // cek apakah menu sudha ada
+                if (cekItem != null) {
+                    // jika menu sudah ada maka tambahkan quantitynya
+                    cekItem.quantity += jumlahPesanan
+                    Database.getInstance(requireContext()).modalDataDao.updateQuantityByItemId(cekItem.quantity, cekItem.id)
+                } else {
+                    // jika menu  belum ada maka tambahkan menu baru
+                    Database.getInstance(requireContext()).modalDataDao.insert(Cart(0,makanan?.nama,makanan?.harga?.toString()?.replace("[^0-9]".toRegex(), "",),makanan?.imageUrl,binding.tvCounter.text.toString().toInt()))
+                }
+//                Database.getInstance(requireContext()).modalDataDao.insert(Cart(0,makanan?.nama,makanan?.harga?.toString()?.replace("[^0-9]".toRegex(), "",),makanan?.imageUrl,binding.tvCounter.text.toString().toInt()))
+                Toast.makeText(requireContext(),"Pesanan Berhasil Di pindahkan ke keranjang Anda",Toast.LENGTH_LONG).show()
+                val nBundle = Bundle()
+                findNavController().navigate(R.id.action_detailInformation_to_homeFragment2, nBundle)
+            }else{
+                Toast.makeText(requireContext(),"Minimal Pesan Harus 1 buah",Toast.LENGTH_LONG).show()
+            }
         }
     }
 
@@ -92,11 +115,10 @@ class DetailInformation : Fragment() {
         binding.minus.setOnClickListener{
             mDecrement()
         }
-        viewModel.counter.observe(this){result ->
+        viewModel.counter.observe(viewLifecycleOwner){result ->
             binding.tvCounter.text = result.toString()
 
         }
-
     }
     private fun mIncrement(){
         viewModel.incremet()

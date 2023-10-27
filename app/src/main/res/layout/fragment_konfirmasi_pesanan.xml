@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="25dp"
     tools:context=".KonfirmasiPesanan">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -99,6 +100,7 @@
             android:textStyle="bold"
             android:text="Total Pembayaran"/>
         <Button
+            android:id="@+id/pesan"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/tv3"
