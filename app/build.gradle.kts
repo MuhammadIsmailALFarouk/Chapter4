@@ -76,6 +76,9 @@ dependencies {
     // Glide
     implementation("com.github.bumptech.glide:glide:4.16.0")
 
+    // Koin
+    implementation("io.insert-koin:koin-android:3.5.0")
+
 
 
     implementation("androidx.room:room-ktx:2.5.2")

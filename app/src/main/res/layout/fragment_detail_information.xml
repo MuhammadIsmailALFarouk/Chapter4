@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".DetailInformation">
+    tools:context=".viewModel.FragmentDetail.DetailInformation">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:scaleType="centerCrop"
             android:src="@drawable/paket_hemat"
-            />
+            android:contentDescription="@string/gambarmenu" />
         <TextView
             android:id="@+id/namaMakanan"
             android:layout_width="wrap_content"
@@ -39,11 +39,11 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             android:textStyle="bold"
-            android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp"
             android:textSize="15sp"
             android:layout_marginTop="20dp"
-            android:layout_marginLeft="15dp"
-            android:text="Harga Makanan"
+            android:layout_marginStart="15dp"
+            android:text="@string/harga_makanan"
             android:textColor="@color/black"
             app:layout_constraintTop_toBottomOf="@+id/iv_image1" />
 
@@ -56,7 +56,7 @@
 
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginRight="15dp"
-            android:text="Description"
+            android:text="@string/description"
             app:layout_constraintTop_toBottomOf="@id/namaMakanan"/>
 
         <ImageButton
@@ -68,7 +68,7 @@
             android:background="@color/white"
             app:layout_constraintTop_toBottomOf="@id/description"
             android:src="@drawable/store"
-            />
+            android:contentDescription="@string/lokasi" />
         <TextView
             android:id="@+id/tv_1"
             android:layout_width="wrap_content"
@@ -103,10 +103,10 @@
             android:layout_marginEnd="124dp"
             android:layout_marginBottom="20dp"
             android:backgroundTint="@color/white"
-            android:text="+"
             android:textColor="@color/black"
             app:layout_constraintBottom_toTopOf="@id/tambahKeranjang"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            android:contentDescription="@string/plus" />
 
         <TextView
             android:id="@+id/tvCounter"
@@ -114,7 +114,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="25dp"
-            android:text="0"
+            android:text="@string/_0"
             app:layout_constraintEnd_toStartOf="@id/minus"
             android:textColor="@color/black"
             android:textSize="15sp"
@@ -128,16 +128,15 @@
             android:src="@drawable/minus"
             android:layout_marginStart="76dp"
             android:layout_marginBottom="20dp"
-
             android:backgroundTint="@color/white"
-            android:text="-"
             android:textColor="@color/black"
             app:layout_constraintBottom_toTopOf="@id/tambahKeranjang"
             app:layout_constraintEnd_toStartOf="@id/tvCounter"
             app:layout_constraintHorizontal_bias="0.416"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/alamatToko"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="1.0"
+            android:contentDescription="@string/minus" />
 
         <Button
             android:id="@+id/tambahKeranjang"
@@ -154,7 +153,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginBottom="40dp"
             app:layout_constraintStart_toStartOf="parent"/>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

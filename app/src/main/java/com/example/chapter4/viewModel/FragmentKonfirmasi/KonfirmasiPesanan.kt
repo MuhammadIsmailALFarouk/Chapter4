@@ -1,4 +1,4 @@
-package com.example.chapter4
+package com.example.chapter4.viewModel.FragmentKonfirmasi
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,9 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.chapter4.R
 import com.example.chapter4.cart.AdapterCart
 import com.example.chapter4.databaseRom.Database
 import com.example.chapter4.databaseRom.ModalDataDao
@@ -20,6 +22,7 @@ class KonfirmasiPesanan : Fragment() {
     private lateinit var binding: FragmentKonfirmasiPesananBinding
     private lateinit var modalDataDao: ModalDataDao
     private lateinit var adapterCart: AdapterCart
+    private lateinit var viewModel:ViewModelKonfirmasi
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,6 +43,13 @@ class KonfirmasiPesanan : Fragment() {
         val recyclerViewKeranjang : RecyclerView = binding.recycleKeranjang
         recyclerViewKeranjang.layoutManager = LinearLayoutManager(context)
 
+        viewModel = ViewModelProvider(this).get(ViewModelKonfirmasi::class.java)
+
+        viewModel.setTotalHarga(totalHarga ?: 0)
+
+        viewModel.getTotalHarga().observe(viewLifecycleOwner, Observer{ harga ->
+            binding.tv3.text = "Total Pembayaran Rp. $harga"
+        })
 
         modalDataDao = Database.getInstance(requireContext()).modalDataDao
         adapterCart = AdapterCart(requireContext(),modalDataDao)
@@ -49,10 +59,10 @@ class KonfirmasiPesanan : Fragment() {
         dataDao.getAllItem().observe(viewLifecycleOwner, Observer{ listCart ->
             adapterCart.setDataCartList(listCart)
 
-
         })
         binding.pesan.setOnClickListener {
             Toast.makeText(requireContext(), "Pesanan Berhasil Di Proses", Toast.LENGTH_SHORT).show()
+            viewModel.deleteAllItemsFromCart(dataDao)
             dataDao.deleteAllItemCart()
             val nBundle = Bundle()
             findNavController().navigate(R.id.action_konfirmasiPesanan_to_homeFragment, nBundle)

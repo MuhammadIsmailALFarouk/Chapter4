@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/detailInformation"
-        android:name="com.example.chapter4.DetailInformation"
+        android:name="com.example.chapter4.viewModel.FragmentDetail.DetailInformation"
         android:label="fragment_detail_information"
         tools:layout="@layout/fragment_detail_information" >
 
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/keranjang"
-        android:name="com.example.chapter4.Keranjang"
+        android:name="com.example.chapter4.viewModel.FragmentKeranjang.Keranjang"
         android:label="fragment_keranjang"
         tools:layout="@layout/fragment_keranjang" >
         <action
@@ -26,7 +26,7 @@
     </fragment>
     <fragment
         android:id="@+id/konfirmasiPesanan"
-        android:name="com.example.chapter4.KonfirmasiPesanan"
+        android:name="com.example.chapter4.viewModel.FragmentKonfirmasi.KonfirmasiPesanan"
         android:label="fragment_konfirmasi_pesanan"
         tools:layout="@layout/fragment_konfirmasi_pesanan" >
         <action

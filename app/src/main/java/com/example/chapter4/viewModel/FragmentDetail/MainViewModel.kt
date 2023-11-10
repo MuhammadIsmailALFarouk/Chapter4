@@ -1,4 +1,4 @@
-package com.example.chapter4
+package com.example.chapter4.viewModel.FragmentDetail
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

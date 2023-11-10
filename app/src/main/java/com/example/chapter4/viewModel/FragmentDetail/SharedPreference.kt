@@ -1,4 +1,4 @@
-package com.example.chapter4
+package com.example.chapter4.viewModel.FragmentDetail
 
 import android.content.Context
 import androidx.core.content.edit

@@ -1,4 +1,4 @@
-package com.example.chapter4
+package com.example.chapter4.viewModel.FragmentDetail
 
 import android.content.Intent
 import android.net.Uri
@@ -14,6 +14,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.example.chapter4.R
 import com.example.chapter4.cart.Cart
 import com.example.chapter4.databaseRom.Database
 import com.example.chapter4.databinding.FragmentDetailInformationBinding
@@ -64,8 +65,6 @@ class DetailInformation : Fragment() {
             alamatToko.text = makanan.alamatResto
 
         }
-
-
         withViewModels()
         viewModel.counter1.observe(viewLifecycleOwner){
             if (makanan?.harga != null){
