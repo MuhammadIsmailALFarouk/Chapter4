@@ -77,18 +77,11 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.16.0")
 
     // Koin
-//    implementation("io.insert-koin:koin-android:3.3.0")
-//    implementation ("io.insert-koin:koin-core:3.5.0")
-//    //
-//    implementation ("io.insert-koin:koin-android-compat:3.5.0")
-//    implementation ("io.insert-koin:koin-androidx-workmanager:3.5.0")
-//    implementation ("io.insert-koin:koin-androidx-navigation:3.5.0")
-//    implementation ("io.insert-koin:koin-androidx-viewmodel:3.5.0")
-    implementation ("io.insert-koin:koin-core:3.2.2")
-    implementation ("io.insert-koin:koin-android:3.3.0")
-    implementation ("io.insert-koin:koin-android-compat:3.3.0")
-    implementation ("io.insert-koin:koin-androidx-workmanager:3.3.0")
-    implementation ("io.insert-koin:koin-androidx-navigation:3.3.0")
+    implementation ("io.insert-koin:koin-core:3.5.0")
+    implementation ("io.insert-koin:koin-android:3.5.0")
+    implementation ("io.insert-koin:koin-android-compat:3.5.0")
+    implementation ("io.insert-koin:koin-androidx-workmanager:3.5.0")
+    implementation ("io.insert-koin:koin-androidx-navigation:3.5.0")
 
 
 
