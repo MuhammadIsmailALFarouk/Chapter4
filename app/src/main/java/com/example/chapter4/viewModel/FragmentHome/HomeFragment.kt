@@ -1,14 +1,17 @@
-package com.example.chapter4
+package com.example.chapter4.viewModel.FragmentHome
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.chapter4.MyAdapter
+import com.example.chapter4.R
 import com.example.chapter4.databinding.FragmentHomeBinding
 import com.example.chapter4.listmenu.Data
 import com.example.chapter4.repository.RepositoryMenu
@@ -16,11 +19,13 @@ import com.example.chapter4.repository.ViewModelAdapterFactory
 import com.example.chapter4.viewModel.FragmentDetail.SharedPreference
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
+import org.koin.androidx.viewmodel.ext.android.viewModel
+
 class HomeFragment : Fragment() {
     private lateinit var sharedPreferences: SharedPreference
     private var listMenu: ArrayList<Data> = ArrayList()
     private lateinit var binding:FragmentHomeBinding
-//    private val viewModel:ViewModelAdapter by viewModels()
+    private val viewModel:ViewModelAdapter by viewModel()
     private var isGrid =true
 
 
@@ -44,9 +49,10 @@ class HomeFragment : Fragment() {
 
         //setupRecyclerView(isGrid,listMenu)
         setupActionChangeLayout()
-        val repositroyMenu = RepositoryMenu()
-        val viewModelFactory = ViewModelAdapterFactory(repositroyMenu)
-        val viewModel = ViewModelProvider(this,viewModelFactory).get(ViewModelAdapter::class.java)
+//        val repositroyMenu = RepositoryMenu()
+//        val viewModelFactory = ViewModelAdapterFactory(repositroyMenu)
+//        val viewModel = ViewModelProvider(this,viewModelFactory).get(ViewModelAdapter::class.java)
+
 
 
         viewModel.getListMenu()
