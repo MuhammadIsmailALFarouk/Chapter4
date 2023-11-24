@@ -19,7 +19,5 @@ class MainViewModel: ViewModel() {
                 counter.postValue(counter.value?.minus(1))
             }
         }
-
     }
-
 }
